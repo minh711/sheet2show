@@ -56,8 +56,7 @@ function App() {
     return false;
   };
 
-  const handleColorChange = (value: any, css: string) => {
-    value = 0;
+  const handleColorChange = (_value: any, css: string) => {
     setBackgroundColor(css);
     localStorage.setItem("backgroundColor", css);
   };
