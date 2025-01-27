@@ -56,13 +56,13 @@ function App() {
     return false;
   };
 
-  const handleColorChange = (value: any, css: string) => {
+  const handleColorChange = (css: string) => {
     setBackgroundColor(css);
     localStorage.setItem("backgroundColor", css);
   };
 
   const handleSelectChange = (value: string) => {
-    const selectedOption = options.find((opt) => opt.id === parseInt(value));
+    const selectedOption = options.find((opt) => opt.id.toString() === value);
     if (selectedOption) {
       setSelectedOptionId(selectedOption.id);
       setSpriteWidth(selectedOption.width);
