@@ -20,6 +20,7 @@ import {
 } from "antd";
 import { GithubOutlined, UploadOutlined } from "@ant-design/icons";
 import { v4 as uuidv4 } from "uuid";
+import { columns } from "./columns";
 
 const { Footer } = Layout;
 const { Text } = Typography;
@@ -412,54 +413,10 @@ function App() {
           </Button>
           <Table
             dataSource={options}
-            columns={[
-              {
-                title: <div style={{ textAlign: "center" }}>Width</div>,
-                dataIndex: "width",
-                key: "width",
-                align: "right",
-              },
-              {
-                title: <div style={{ textAlign: "center" }}>Height</div>,
-                dataIndex: "height",
-                key: "height",
-                align: "right",
-              },
-              {
-                title: <div style={{ textAlign: "center" }}>Total Sprites</div>,
-                dataIndex: "totalSprites",
-                key: "totalSprites",
-                align: "right",
-              },
-              {
-                title: <div style={{ textAlign: "center" }}>Speed</div>,
-                dataIndex: "speed",
-                key: "speed",
-                align: "right",
-              },
-              {
-                title: <div style={{ textAlign: "center" }}>Actions</div>,
-                key: "actions",
-                render: (record: any) => (
-                  <div style={{ textAlign: "center" }}>
-                    <Button
-                      onClick={() => handleEditOption(record)}
-                      style={{ marginRight: 8 }}
-                    >
-                      Edit
-                    </Button>
-                    <Popconfirm
-                      title="Are you sure you want to delete this option?"
-                      onConfirm={() => handleRemoveOption(record.id)}
-                      okText="Yes"
-                      cancelText="No"
-                    >
-                      <Button danger>Delete</Button>
-                    </Popconfirm>
-                  </div>
-                ),
-              },
-            ]}
+            columns={columns({
+              onEdit: handleEditOption,
+              onDelete: handleRemoveOption,
+            })}
             rowKey="id"
             pagination={false}
           />
