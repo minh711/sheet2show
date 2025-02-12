@@ -16,7 +16,6 @@ import {
   ColorPicker,
   Select,
   Table,
-  Popconfirm,
 } from "antd";
 import { GithubOutlined, UploadOutlined } from "@ant-design/icons";
 import { v4 as uuidv4 } from "uuid";
